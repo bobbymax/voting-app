@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('home', function($view) {
+            $view->with('nominees', \App\Models\User::latest()->get());
+        });
     }
 }

@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function gradeLevel()
+    {
+        return $this->belongsTo(GradeLevel::class, 'grade_level_id');
+    }
+
+    // public function isEligible()
+    // {
+    //     return $this->hasManyThrough(Eligibility::class, GradeLevel::class);
+    // }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

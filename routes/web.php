@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('gradeLevels', 'GradeLevelController');
+Route::resource('categories', 'CategoryController');
+Route::resource('criterias', 'CriteriaController');
+Route::resource('weights', 'WeightController');
+Route::resource('eligibilities', 'EligibilityController');
+Route::resource('votes', 'VoteController');
