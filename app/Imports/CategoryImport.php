@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Category;
 use App\Models\Criteria;
+use App\Models\Weight;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -37,14 +38,25 @@ class CategoryImport implements ToCollection
                 $values = explode(",", $row[1]);
 
                 foreach($values as $value) {
-                    $label = Str::slug(trim($value));
+                    $crsc = explode("-", $value);
+                    $label = Str::slug(trim($crsc[0]));
 
                     $criteria = Criteria::where('label', $label)->first();
 
                     if (! $criteria) {
                         $criteria = Criteria::create([
-                            'name' => trim($value),
+                            'name' => trim($crsc[0]),
                             'label' => $label
+                        ]);
+                    }
+
+                    $weight = Weight::where('category_id', $category->id)->where('criteria_id', $criteria->id)->first();
+
+                    if (! $weight) {
+                        $weight = Weight::create([
+                            'category_id' => $category->id,
+                            'criteria_id' => $criteria->id,
+                            'value' => (int)$crsc[1]
                         ]);
                     }
 
