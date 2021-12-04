@@ -26,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('home', function($view) {
             $view->with('nominees', \App\Models\User::latest()->get());
         });
+
+        view()->composer('home', function($view) {
+            $view->with('grades', \App\Models\GradeLevel::latest()->get());
+        });
     }
 }

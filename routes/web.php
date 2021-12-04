@@ -26,3 +26,7 @@ Route::resource('criterias', 'CriteriaController');
 Route::resource('weights', 'WeightController');
 Route::resource('eligibilities', 'EligibilityController');
 Route::resource('votes', 'VoteController');
+
+Route::get('imports', 'ImportController@index')->name('import.index');
+Route::post('imports', 'ImportController@store')->name('import.data');
+Route::patch('user/profile/update', 'UserController@profileUpdate')->name('update.profile');

@@ -16,7 +16,7 @@ class Criteria extends Model
         return $this->hasMany(Weight::class);
     }
 
-    public function category()
+    public function categories()
     {
         return $this->morphToMany(Category::class, 'categoryable');
     }
