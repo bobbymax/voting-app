@@ -95,7 +95,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="footer-copyright">&copy; 2019 Solid, all rights reserved</div>
+                    <div class="footer-copyright">&copy; 2021 NCDMB, all rights reserved</div>
                 </div>
             </div>
         </footer>
