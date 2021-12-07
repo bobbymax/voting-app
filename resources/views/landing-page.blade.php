@@ -31,8 +31,10 @@
                 <div class="container">
                     <div class="hero-inner">
 						<div class="hero-copy">
+                            <h4 style="color: #ede82a;">ATTENTION! ATTENTION!! ATTENTION!!!</h4>
 	                        <h1 class="hero-title mt-0">Welcome to the NCDMB Voting Platform.</h1>
-	                        <p class="hero-paragraph">Kindly note that the options carry different weights from 5 - 1 in descending order. You can not vote after submitting. Have fun voting!!</p>
+                            <hr>
+	                        <p class="hero-paragraph">Kindly note that the options carry different weights from 5 - 1 in descending order. You have the option of voting for up to 5 persons within a category or click all the qualities for same individual of your choice. You cannot vote after submitting. Have fun voting!!</p>
 	                        <div class="hero-cta"><a class="button button-primary" href="{{ route('home') }}">Vote now</a></div>
 						</div>
 						<div class="hero-figure anime-element">
