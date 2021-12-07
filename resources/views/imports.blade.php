@@ -22,7 +22,7 @@
 						<label for="entity">Entity</label>
 						<select name="entity" id="ent" class="form-control">
 							<option value="" disabled selected>Select Entity</option>
-							@foreach(['users', 'grades', 'categories', 'criterias'] as $entity)
+							@foreach(['users', 'grades', 'categories', 'criterias', 'zonals'] as $entity)
 
 								<option value="{{ $entity }}">{{ ucfirst($entity) }}</option>
 

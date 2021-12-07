@@ -30,5 +30,25 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('home', function($view) {
             $view->with('grades', \App\Models\GradeLevel::latest()->get());
         });
+
+        view()->composer('dashboard', function($view) {
+            $view->with('nominees', \App\Models\User::orderBy('name')->get());
+        });
+
+        view()->composer('dashboard', function($view) {
+            $view->with('grades', \App\Models\GradeLevel::latest()->get());
+        });
+
+        view()->composer('dashboard', function($view) {
+            $view->with('zonals', \App\Models\Zonal::latest()->get());
+        });
+
+        view()->composer('dashboard', function($view) {
+            $view->with('categories', \App\Models\Category::latest()->get());
+        });
+
+        view()->composer('dashboard', function($view) {
+            $view->with('criterias', \App\Models\Criteria::latest()->get());
+        });
     }
 }

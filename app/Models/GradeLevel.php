@@ -20,4 +20,9 @@ class GradeLevel extends Model
     {
         return $this->hasMany(Eligibility::class);
     }
+    
+    public function votables()
+    {
+        return $this->hasMany(CanVote::class);
+    }
 }

@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function votes()
     {
-        return $this->hasMany(Vote::class);
+        return $this->morphMany(Vote::class, 'voteable');
     }
 }

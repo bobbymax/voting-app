@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Imports\GradeLevelImport;
+use App\Imports\ZonalImport;
 use App\Imports\UserImport;
 use App\Imports\CategoryImport;
 
@@ -34,7 +35,7 @@ class ImportController extends Controller
                 (new CategoryImport())->import($file);
                 break;
             default:
-                [];
+                (new ZonalImport())->import($file);
                 break;
         }
 

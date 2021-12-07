@@ -25,7 +25,9 @@ Route::resource('categories', 'CategoryController');
 Route::resource('criterias', 'CriteriaController');
 Route::resource('weights', 'WeightController');
 Route::resource('eligibilities', 'EligibilityController');
+Route::resource('canVotes', 'CanVoteController');
 Route::resource('votes', 'VoteController');
+Route::resource('zonals', 'ZonalController');
 
 Route::get('imports', 'ImportController@index')->name('import.index');
 Route::post('imports', 'ImportController@store')->name('import.data');

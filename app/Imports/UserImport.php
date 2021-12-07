@@ -30,24 +30,26 @@ class UserImport implements ToCollection
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            //$grade = GradeLevel::where('key', $row[2])->first();
+            $emal = $row[0] == "" ? trim($row[1]) . "." . trim($row[2]) . "@ncdmb.gov.ng" : $row[0];
+            $grade = $row[3] !== "" ? GradeLevel::where('key', $row[3])->first() : null;
+            if ($grade) {
+                $user = User::create([
+                    'name' => $row[1] . " " . $row[2],
+                    'email' => $row[0],
+                    'grade_level_id' => $grade !== null ? $grade->id : 0,
+                    'password' => Hash::make('Password1'),
+                    'type' => $row[4]
+                ]);
 
-            // if ($grade) {
-            //     $user = User::create([
-            //         'name' => $row[0],
-            //         'email' => $row[1],
-            //         'grade_level_id' => $grade->id,
-            //         'password' => Hash::make('Password1')
-            //     ]);
+                $this->result[] = $user;
+            }
 
-            //     $this->result[] = $user;
-            // }
-
-            $user = User::create([
-                'email' => $row[0],
-                'name' => $row[1] . " " . $row[2],
-                'password' => Hash::make('Password1')
-            ]);
+            // $user = User::create([
+            //     'email' => $emal,
+            //     'name' => $row[1] . " " . $row[2],
+            //     'password' => Hash::make('Password1'),
+            //     'type' => trim($row[3])
+            // ]);
 
             $this->result[] = $user;
         }

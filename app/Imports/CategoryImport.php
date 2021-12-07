@@ -31,7 +31,8 @@ class CategoryImport implements ToCollection
         foreach($rows as $row) {
             $category = Category::create([
                 'name' => $row[0],
-                'label' => Str::slug($row[0])
+                'label' => Str::slug($row[0]),
+                'group' => $row[2]
             ]);
 
             if ($category) {
