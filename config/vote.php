@@ -1,5 +1,6 @@
 <?php
 
 return [
-	'voting' => true
+	'voting' => true,
+	'status' => 'open'
 ];

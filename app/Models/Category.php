@@ -31,6 +31,11 @@ class Category extends Model
         return $this->votables->contains('grade_level_id', $gradeId);
     }
 
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
     public function hasCriteria($criteria)
     {
         if (is_string($criteria)) {

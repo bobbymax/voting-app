@@ -11,7 +11,7 @@ class Vote extends Model
 
     protected $guarded = [''];
 
-    public function votable()
+    public function voteable()
     {
         return $this->morphTo();
     }

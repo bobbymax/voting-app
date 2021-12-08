@@ -20,4 +20,9 @@ class Criteria extends Model
     {
         return $this->morphToMany(Category::class, 'categoryable');
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

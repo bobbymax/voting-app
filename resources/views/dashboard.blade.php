@@ -491,11 +491,14 @@
                                 <button type="submit" class="btn btn-primary">Update Profile</button>
                             </div>
                         </form>
+                    @elseif(config('vote.status') !== "open")
+                        <div class="alert alert-danger" role="alert">
+                            Voting has now been closed!!!
+                        </div>
                     @else
                         <div class="alert alert-info" role="alert">
                             Your vote has already been registered
                         </div>
-
                     @endif
 
                 </div>
