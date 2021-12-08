@@ -6,6 +6,9 @@
         .background-success {
             background-color: #1abc9c;
         }
+        .background-runner {
+            background-color: #f1c40f;
+        }
     </style>
 
 @endsection
@@ -50,7 +53,7 @@
                                                             @php
                                                                 $total = $category->votes->where('voteable_id', $vote->voteable->id)->sum('weight');
                                                                 if(! in_array($total, $fetcher)) $fetcher[] = $total;
-                                                                $nominee[$total] = $vote->voteable->name;
+                                                                if(! in_array($vote->voteable->name, $nominee)) $nominee[$total] = $vote->voteable->name;
                                                             @endphp
                                                             <tr>
                                                                 <td>{{ $vote->voteable->name }}</td>
@@ -59,11 +62,31 @@
                                                                 <td>{{ $vote->weight }}</td>
                                                             </tr>
                                                         @endforeach
-                                                        <tr class="background-success">
-                                                            <td>WINNER</td>
-                                                            <td colspan="2"><strong>{{ strtoupper($nominee[max($fetcher)]) }}</strong></td>
-                                                            <td>{{ max($fetcher) }}</td>
-                                                        </tr>
+
+                                                        @php
+                                                            asort($fetcher);
+                                                            $fetcher = array_reverse($fetcher);
+                                                            $results = array_slice($fetcher, 0, 3);
+                                                            $secondy = array_slice($fetcher, 1, 3);
+                                                        @endphp
+
+                                                        @foreach ($results as $result)
+                                                            <tr class="{{ max($results) == $result ? ' background-success' : ' background-runner' }}">
+                                                                <td>
+                                                                    @php
+                                                                        if (max($results) == $result) {
+                                                                            echo 'WINNER';
+                                                                        } elseif (max($secondy) == $result) {
+                                                                            echo 'RUNNER UP';
+                                                                        } else {
+                                                                            echo 'THIRD PLACE';
+                                                                        }
+                                                                    @endphp
+                                                                </td>
+                                                                <td colspan="2"><strong>{{ strtoupper($nominee[$result]) }}</strong></td>
+                                                                <td>{{ $result }}</td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
