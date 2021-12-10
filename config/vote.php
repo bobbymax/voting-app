@@ -2,5 +2,5 @@
 
 return [
 	'voting' => true,
-	'status' => 'open'
+	'status' => 'closed'
 ];
