@@ -15,44 +15,31 @@
                     @endif
 
 
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Staff</th>
-                                <th>Vote Count</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($staff as $voter)
-                                @if($voter->castedVotes->count() <= 30)
+                    @foreach($staff as $voter)
+                        @if($voter->castedVotes->count() <= 30)
+                            <h3>{{ $voter->name . " - " . $voter->castedVotes->count() }}</h3>
+                            <table class="table table-bordered table-striped">
+                                <thead>
                                     <tr>
-                                        <td>{{ $voter->name }}</td>
-                                        <td>{{ $voter->castedVotes->count() }}</td>
+                                        <th>Category</th>
+                                        <th>Criteria</th>
+                                        <th>Weight</th>
+                                        <th>Nominated</th>
                                     </tr>
-                                    <table class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Category</th>
-                                                <th>Criteria</th>
-                                                <th>Weight</th>
-                                                <th>Nominated</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($voter->castedVotes as $vote)
-                                                <tr>
-                                                    <td>{{ $vote->category->name }}</td>
-                                                    <td>{{ $vote->criteria->name }}</td>
-                                                    <td>{{ $vote->weight }}</td>
-                                                    <td>{{ $vote->voteable->name }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($voter->castedVotes as $vote)
+                                        <tr>
+                                            <td>{{ $vote->category->name }}</td>
+                                            <td>{{ $vote->criteria->name }}</td>
+                                            <td>{{ $vote->weight }}</td>
+                                            <td>{{ $vote->voteable->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
+                    @endforeach
 
                 </div>
             </div>
