@@ -50,19 +50,17 @@
                                                             $nominee = [];
                                                         @endphp
                                                         @foreach ($category->votes as $vote)
-                                                            @if ($vote->caster->castedVotes->count() <= 30)
-                                                                @php
-                                                                    $total = $category->votes->where('voteable_id', $vote->voteable->id)->sum('weight');
-                                                                    if(! in_array($total, $fetcher)) $fetcher[] = $total;
-                                                                    if(! in_array($vote->voteable->name, $nominee)) $nominee[$total] = $vote->voteable->name;
-                                                                @endphp
-                                                                <tr>
-                                                                    <td>{{ $vote->voteable->name }}</td>
-                                                                    <td>{{ $vote->category->name }}</td>
-                                                                    <td>{{ $vote->criteria->name }}</td>
-                                                                    <td>{{ $vote->weight }}</td>
-                                                                </tr>
-                                                            @endif
+                                                            @php
+                                                                $total = $category->votes->where('voteable_id', $vote->voteable->id)->sum('weight');
+                                                                if(! in_array($total, $fetcher)) $fetcher[] = $total;
+                                                                if(! in_array($vote->voteable->name, $nominee)) $nominee[$total] = $vote->voteable->name;
+                                                            @endphp
+                                                            <tr>
+                                                                <td>{{ $vote->voteable->name }}</td>
+                                                                <td>{{ $vote->category->name }}</td>
+                                                                <td>{{ $vote->criteria->name }}</td>
+                                                                <td>{{ $vote->weight }}</td>
+                                                            </tr>
                                                         @endforeach
 
                                                         @php
