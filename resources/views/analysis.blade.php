@@ -29,28 +29,26 @@
                                         <td>{{ $voter->name }}</td>
                                         <td>{{ $voter->castedVotes->count() }}</td>
                                     </tr>
-                                    <tr>
-                                        <table class="table table-bordered table-striped">
-                                            <thead>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Category</th>
+                                                <th>Criteria</th>
+                                                <th>Weight</th>
+                                                <th>Nominated</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($voter->castedVotes as $vote)
                                                 <tr>
-                                                    <th>Category</th>
-                                                    <th>Criteria</th>
-                                                    <th>Weight</th>
-                                                    <th>Nominated</th>
+                                                    <td>{{ $vote->category->name }}</td>
+                                                    <td>{{ $vote->criteria->name }}</td>
+                                                    <td>{{ $vote->weight }}</td>
+                                                    <td>{{ $vote->voteable->name }}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($voter->castedVotes as $vote)
-                                                    <tr>
-                                                        <td>{{ $vote->category->name }}</td>
-                                                        <td>{{ $vote->criteria->name }}</td>
-                                                        <td>{{ $vote->weight }}</td>
-                                                        <td>{{ $vote->voteable->name }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 @endif
                             @endforeach
                         </tbody>
