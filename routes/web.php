@@ -30,6 +30,7 @@ Route::resource('votes', 'VoteController');
 Route::resource('zonals', 'ZonalController');
 Route::get('results', 'LeaderBoardController@collateVotes')->name('leaderboard');
 
+Route::get('analysis', 'HomeController@fetchCastedVotes')->name('vote.analysis');
 Route::get('imports', 'ImportController@index')->name('import.index');
 Route::post('imports', 'ImportController@store')->name('import.data');
 Route::patch('user/profile/update', 'UserController@profileUpdate')->name('update.profile');
