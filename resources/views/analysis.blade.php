@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>
                             @foreach($staff as $voter)
-                                @if($voter->castedVotes->count <= 30)
+                                @if($voter->castedVotes->count() <= 30)
                                     <tr>
                                         <td>{{ $voter->name }}</td>
                                         <td>{{ $voter->castedVotes->count() }}</td>
