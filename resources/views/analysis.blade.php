@@ -25,6 +25,7 @@
                                         <th>Criteria</th>
                                         <th>Weight</th>
                                         <th>Nominated</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,6 +35,7 @@
                                             <td>{{ $vote->criteria->name }}</td>
                                             <td>{{ $vote->weight }}</td>
                                             <td>{{ $vote->voteable->name }}</td>
+                                            <td>{{ $vote->created_at->format('d F') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
