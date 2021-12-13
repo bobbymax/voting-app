@@ -31,10 +31,10 @@ class HomeController extends Controller
 
     public function fetchCastedVotes()
     {
-        // $staff = User::where('voted', 1)->orderBy('name')->get();
-        // return view('analysis', compact('staff'));
+        $staff = User::where('voted', 1)->orderBy('name')->get();
+        return view('analysis', compact('staff'));
 
-        $votes = Vote::latest()->get();
-        return view('analysis', compact('votes'));
+        // $votes = Vote::latest()->get();
+        // return view('analysis', compact('votes'));
     }
 }
