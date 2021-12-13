@@ -14,9 +14,15 @@
                         </div>
                     @endif
 
+                    @php
+                        $voters = [];
+                    @endphp
 
                     @foreach($staff as $voter)
                         @if($voter->castedVotes->count() <= 30)
+                            @php
+                                $voters[] = $voter->name;
+                            @endphp
                             <h3>{{ $voter->name . " - " . $voter->castedVotes->count() }}</h3>
                             <table class="table table-bordered table-striped">
                                 <thead>
@@ -43,6 +49,10 @@
                         @endif
                     @endforeach
 
+                </div>
+
+                <div class="alert alert-success" role="alert">
+                    Number of Staff that Voted: {{ count($voters) }}
                 </div>
             </div>
         </div>
