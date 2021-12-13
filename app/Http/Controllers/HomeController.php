@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     public function fetchCastedVotes()
     {
-        $staff = User::where('voted', 1)->orderBy('name')->get();
+        $staff = User::where('voted', 1)->orderBy('updated_at', 'DESC')->get();
         return view('analysis', compact('staff'));
 
         // $votes = Vote::latest()->get();

@@ -43,47 +43,6 @@
                         @endif
                     @endforeach
 
-                    {{-- @php
-                        $user = [];
-                    @endphp
-
-                    @foreach($votes as $vote)
-                        @if($vote->caster->castedVotes->count() <= 30)
-                            @if (! in_array($vote->caster->id, $user))
-                                @php
-                                    $user[] = $vote->caster->id;
-                                @endphp
-                                <h3>{{ $vote->caster->name . " - " . $vote->caster->castedVotes->count() }}</h3>
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Category</th>
-                                            <th>Criteria</th>
-                                            <th>Weight</th>
-                                            <th>Nominated</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($vote->caster->castedVotes as $vote)
-                                            <tr>
-                                                <td>{{ $vote->category->name }}</td>
-                                                <td>{{ $vote->criteria->name }}</td>
-                                                <td>{{ $vote->weight }}</td>
-                                                <td>{{ $vote->voteable->name }}</td>
-                                                <td>{{ $vote->created_at->format('d F') }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            @else
-                                @php
-                                    continue;
-                                @endphp
-                            @endif
-                        @endif
-                    @endforeach --}}
-
                 </div>
             </div>
         </div>
