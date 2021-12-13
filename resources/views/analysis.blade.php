@@ -15,7 +15,7 @@
                     @endif
 
 
-                    {{-- @foreach($staff as $voter)
+                    @foreach($staff as $voter)
                         @if($voter->castedVotes->count() <= 30)
                             <h3>{{ $voter->name . " - " . $voter->castedVotes->count() }}</h3>
                             <table class="table table-bordered table-striped">
@@ -41,9 +41,9 @@
                                 </tbody>
                             </table>
                         @endif
-                    @endforeach --}}
+                    @endforeach
 
-                    @php
+                    {{-- @php
                         $user = [];
                     @endphp
 
@@ -82,7 +82,7 @@
                                 @endphp
                             @endif
                         @endif
-                    @endforeach
+                    @endforeach --}}
 
                 </div>
             </div>
