@@ -76,6 +76,10 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                            @else
+                                @php
+                                    continue;
+                                @endphp
                             @endif
                         @endif
                     @endforeach
