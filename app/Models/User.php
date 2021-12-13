@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vote::class);
     }
+
+    public function getNumVotes()
+    {
+        return $this->castedVotes->count() <= 30;
+    }
 }

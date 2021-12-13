@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Vote;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,10 @@ class HomeController extends Controller
 
     public function fetchCastedVotes()
     {
-        $staff = User::where('voted', 1)->orderBy('name')->get();
-        return view('analysis', compact('staff'));
+        // $staff = User::where('voted', 1)->orderBy('name')->get();
+        // return view('analysis', compact('staff'));
+
+        $votes = Vote::latest()->get();
+        return view('analysis', compact('votes'));
     }
 }
