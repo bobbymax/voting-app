@@ -18,41 +18,46 @@
                         $voters = [];
                     @endphp
 
-                    @foreach($staff as $voter)
-                        @if($voter->castedVotes->count() <= 30)
-                            @php
-                                $voters[] = $voter->name;
-                            @endphp
-                            <h3>{{ $voter->name . " - " . $voter->castedVotes->count() }}</h3>
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Category</th>
-                                        <th>Criteria</th>
-                                        <th>Weight</th>
-                                        <th>Nominated</th>
-                                        <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($voter->castedVotes as $vote)
+                    @if (auth()->user()->isAdmin)
+                        @foreach($staff as $voter)
+                            @if($voter->castedVotes->count() <= 30)
+                                @php
+                                    $voters[] = $voter->name;
+                                @endphp
+                                <h3>{{ $voter->name . " - " . $voter->castedVotes->count() }}</h3>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $vote->category->name }}</td>
-                                            <td>{{ $vote->criteria->name }}</td>
-                                            <td>{{ $vote->weight }}</td>
-                                            <td>{{ $vote->voteable->name }}</td>
-                                            <td>{{ $vote->created_at->format('d F') }}</td>
+                                            <th>Category</th>
+                                            <th>Criteria</th>
+                                            <th>Weight</th>
+                                            <th>Nominated</th>
+                                            <th>Date</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
-                    @endforeach
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($voter->castedVotes as $vote)
+                                            <tr>
+                                                <td>{{ $vote->category->name }}</td>
+                                                <td>{{ $vote->criteria->name }}</td>
+                                                <td>{{ $vote->weight }}</td>
+                                                <td>{{ $vote->voteable->name }}</td>
+                                                <td>{{ $vote->created_at->format('d F') }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
+                        @endforeach
+                        <div class="alert alert-success" role="alert">
+                            Number of Staff that Voted: {{ count($voters) }}
+                        </div>
+                    @else
+                        <div class="alert alert-danger" role="alert">
+                            {{ __('You are not permitted to take this action') }}
+                        </div>
+                    @endif
 
-                </div>
-
-                <div class="alert alert-success" role="alert">
-                    Number of Staff that Voted: {{ count($voters) }}
                 </div>
             </div>
         </div>
